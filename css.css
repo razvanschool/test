@@ -1,0 +1,107 @@
+  /* Variabile */
+
+  /* De regula, variabilele se declara in interiorul pseudo-selectorului root. */
+  :root {
+    /* --primary este numele variabilei, iar rgb(20, 31, 76) este valoarea ei. */
+    --primary: rgb(74, 195, 87);
+    --secondary: white;
+    --cevaCuloare: red;
+  }
+  
+  header {
+    /* Pentru a folosi valoarea unei variabile, folosim cuvantul cheie var, iar intre paranteze dam numele variabilei respective. */
+    background-color: var(--primary);
+    color: var(--secondary);
+  }
+  
+  main {
+    color: var(--primary);
+    background-color: var(--secondary);
+  }
+  
+  footer {
+    background-color: var(--primary);
+    color: var(--secondary);
+  }
+
+/* animatii */
+
+
+.image-container {
+    width: 300px;
+    height: 200px;
+    
+    /* Dorim ca atunci cand imaginea este marita, ceea ce iese din container sa nu se vada. */
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    /* Imaginea ocupa intreg containerul. */
+    width: 100%;
+    height: auto;
+    
+    /* TOATE tranzitiile, adica schimbarea proprietatilor (in acest caz la hover), sunt facute intr-o secunda. */
+    transition: all 1s;
+  }
+  
+  .image-container img:hover {
+    /* Marim imaginea de 1.1 ori (cu 10%). */
+    transform: scale(1.1);
+  }
+  
+  .spinner {
+    margin-top: 40px;
+    margin-left: 20px;
+    
+    width: 40px;
+    height: 40px;
+    
+    /* Putem da valori diferite pentru oricare dintre cele 4 parti ale borderului. */
+    border-top: solid 6px red;
+    border-right: solid 6px red;
+    border-bottom: solid 6px blue;
+    border-left: solid 6px blue;
+    /* Pentru a obtine un cerc */
+    border-radius: 50%;
+    
+    /* Numele animatiei create cu ajutorul keyframes */
+    animation-name: spin;
+    /* Durata animatiei */
+    animation-duration: 1s;
+    /* Tipul animatiei */
+    animation-timing-function: linear;
+    /* Facem animatia sa ruleze la infinit. */
+    animation-iteration-count: infinite;
+  }
+  
+  /* Animatie, numita spin, care va roti elementul cu 360 de grade (adica o rotatie completa) */
+  @keyframes spin {  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Before & after */
+
+  q {
+    color: red;
+    font-style: italic;
+  }
+  
+  /* before se afiseaza by default fix inaintea elementului, dar ii putem modifica pozitia. */
+  q::before {
+    color: red;
+    /* Modificam pozitia. */
+    position: relative;
+    top: 10px;
+    left: -2px;
+    /* Before este un pseuso-element, deci poate avea si continut. */
+    content: "\0022"
+  }
+  
+  /* after se afiseaza by default fix dupa element, dar ii putem modifica pozitia, daca dorim. */
+  q::after {
+    color: red;
+    content: "\0022"
+  }
+
